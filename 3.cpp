@@ -1,30 +1,46 @@
+/************************************************************************/
+/* 解题报告:http://www.cnblogs.com/LCCRNblog/p/4375922.html             */
+/************************************************************************/
 class Solution {
 public:
 	int lengthOfLongestSubstring(string s) {
-		set<char> mySet;
-		mySet.clear();
-		int ascii[256];
-		memset(ascii,0,sizeof(ascii));
+		int res=0;
 		int length = s.length();
-		int subLen=0,temp=0;
-		for (int i=0;i<length;i++)//tmmzuxt
+		if (0 == length)
 		{
-			if(mySet.find(s[i])==mySet.end())
+			return 0;
+		}
+		int i=0,j=1;
+		int index[256];
+		memset(index,-1,sizeof(index));
+		index[s[0]]=0;
+		while (i<j&&j<length)//"abcabcbb"
+		{
+			if(-1 == index[s[j]])
 			{
-				temp++;
-				mySet.insert(s[i]);
+				index[s[j]]=j;	
+
 			}
 			else
 			{
-				if(temp>subLen)subLen=temp;
-				temp=ascii[s[i-1]]-ascii[s[i]]+1;
-				mySet.clear();
-				mySet.insert(s[i]);
+				if(j-i>res)res = j-i;
+				while(true)
+				{
+					if (s[i]!=s[j])
+					{
+						index[s[i]]=-1;
+						i++;						
+					}else
+						break;
+					
+				}
+				i++;
 			}
-			ascii[s[i]]=temp;
-		}
-		if(temp>subLen)subLen=temp;
-		return subLen;
+			j++;
 
+
+		}
+		if(j-i>res)res = j-i;
+		return res;
 	}
 };
