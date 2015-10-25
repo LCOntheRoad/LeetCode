@@ -1,6 +1,7 @@
 /************************************************************************/
-/*解题报告：http://www.cnblogs.com/LCCRNblog/p/4369257.html             */
+/*瑙ｉ鎶ュ憡http://www.cnblogs.com/LCCRNblog/p/4369257.html             */
 /************************************************************************/
+
 class Solution {
 public:
 	vector<int> twoSum(vector<int> &numbers, int target) {
